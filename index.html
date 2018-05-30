@@ -2,10 +2,108 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>title</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Strona Google</title>
+    <link rel="stylesheet" href="reset.css">
   </head>
   <body>
+  <style>
+	body{
+	font-family: arial,sans-serif;
+	}
+	.nav{
+		font-size: 14px;
+		width: 100%;
+		text-align: right;
+		word-spacing: 14px;
+		margin-top:20px;
+		margin-left:-20px;
+		
+	}
+	img{
+		vertical-align:middle;
+	}
+	a{
+		color: gray;
+		text-decoration:none;
+	}	
+	.main{
+		padding-top: 109px;
+	}
+	.SearchBox{
+		max-width: 584px;
+		margin: 20px 20px;
+		background-color: #fff;
+		height: 44px;
+		vertical-align: top;
+		border-radius: 2px;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+		transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);	
+	}
+	input[type=text] {
+		max-width: 550px;
+		background-color: #fff;
+		border: none;
+		padding-top: 1px;
+		padding-bottom:1px;
+		margin: 0px;
+		width: 100%;
+		outline: none;
+		
+		font: 16px;
+		height: 42px !important;
+	
+	}
+	input[type="submit"]{
+		height: 36px;
+		background-color: #f2f2f2;
+		border: 1px solid #f2f2f2;
+		border-radius: 2px;
+		color: #757575;
+		font-size: 13px;
+		font-weight: bold;
+		margin: 11px 4px;
+		min-width: 54px;
+		padding: 0 16px;
+		text-align: center;
+	}
+	input[type=submit]:hover{
+		border: 1px solid #c6c6c6;
+		box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+		color: #222;
+	}
+	.set_lang{
+		
+		font-size:small;
+	}
+  </style>
     <!-- page content -->
+    <div class="nav">
+		<span>
+			<a href="https://mail.google.com/mail/">Gmail</a>
+			<a href="https://www.google.pl/imghp">Grafika</a>
+		</span>
+		<img src="selection.png" />
+		<img src="bell.png" />
+		<img src="icon.png" />	
+	</div>
+    <br />
+<center>
+	<div class="main">
+		<form  method="get" action="http://www.google.com/search">
+		<img src="Google_text.png" />
+		<div class="SearchBox">
+		<input type="text" name="q" size="40" maxlength="255" />
+		</div>
+		<span>
+			<input type="submit" name="btnG" value="Szukaj w Google">
+			<input type="submit" name="btnG" value="Szczęśliwy traf">
+		</span>
+		</form>
+		<br />
+		<p class="set_lang">
+		Korzystaj z Google w tych językach: <a style="color:darkblue" href="http://www.google.com">English</a>
+		</p>
+	</div>
+</center>
   </body>
 </html>
