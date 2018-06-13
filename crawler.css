@@ -1,0 +1,35 @@
+.header {
+	background: #EEEEEE;
+	padding: 20px;
+	text-align: center;
+}
+a{
+	background-color: #DDDDDD;
+	border: 1px solid #DDDDDD;
+	border-radius: 2px;
+	display: inline-block;
+	color: #757575;
+	font-size: 13px;
+	padding: 2px 8px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	text-decoration:none;
+}
+input[type="submit"]{
+	height: 36px;
+	background-color: #DDDDDD;
+	border: 1px solid #DDDDDD;
+	border-radius: 2px;
+	color: #757575;
+	font-size: 13px;
+	font-weight: bold;
+	margin-top:10px;
+}
+
+input[type="text"]{	
+	outline:none;
+	border-radius: 1px;
+	padding:3px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
