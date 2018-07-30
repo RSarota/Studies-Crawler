@@ -6,17 +6,7 @@
 	<script type="text/javascript" src="jquery.min.js"></script> 
 	<script type="text/javascript"> 
 		function funkcja(url){
-			<?php
-				echo $url;
-		//new_tables();
-		echo "<hr>";
-		if (filter_var($url, FILTER_VALIDATE_URL)){	
-			echo get_URLs($url);
-		}
-		else{
-			echo 'Invalid url!';
-		}	
-			?>
+			alert(url);
 		}
 	</script>
   </head>
@@ -24,13 +14,13 @@
     <!-- page content -->
 	<div class="header">
 		<h1>Crawler</h1>
-		<form  method="post" action="<?php $_SERVER['PHP_SELF'];?>">
+		<form  method="get" action="<?php $_SERVER['PHP_SELF'];?>">
 			<input type="text" name="URL"><br>
 			<input type="submit" value="Crawl!">
 		</form>
 	</div>
 	<?php
-	include('create_db.php');
+	include('db_functions.php');
 
 	function get_URLs($url){
 		$xml = new DOMDocument();
@@ -53,7 +43,7 @@
 		$links = array_unique($links);
 		
 		foreach($links as $link){
-			$URLs .= '<a href="'.$link.'" onClick="funkcja(this.href);">'.$link.'</a>';
+			$URLs .= '<a href="crawler.php?URL='.$link.'" name="'.$link.'">'.$link.'</a>';
 			$xml2 = new DOMDocument();
 			@$xml2->loadHTMLFile($link);
 			$content=$xml2->saveHTML();
@@ -62,10 +52,10 @@
 		return $URLs;
 	} 
 	
-	if(isset($_POST['URL']) && $_POST['URL'] != ''){
-		$url = $_POST['URL'];
+	if(isset($_GET['URL']) && $_GET['URL'] != ''){
+		$url = $_GET['URL'];
 		echo $url;
-		new_tables();
+		//new_tables();
 		echo "<hr>";
 		if (filter_var($url, FILTER_VALIDATE_URL)){	
 			echo get_URLs($url);
