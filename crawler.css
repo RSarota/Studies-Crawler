@@ -15,6 +15,10 @@ a{
 	margin-bottom: 5px;
 	text-decoration:none;
 }
+a:visited{
+	color: #800080;
+}
+
 input[type="submit"]{
 	height: 36px;
 	background-color: #DDDDDD;
