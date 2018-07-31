@@ -3,15 +3,8 @@
     <meta charset="utf-8">
     <title>Crawler</title>
     <link rel="stylesheet" href="crawler.css">
-	<script type="text/javascript" src="jquery.min.js"></script> 
-	<script type="text/javascript"> 
-		function funkcja(url){
-			alert(url);
-		}
-	</script>
   </head>
   <body>
-    <!-- page content -->
 	<div class="header">
 		<h1>Crawler</h1>
 		<form  method="get" action="<?php $_SERVER['PHP_SELF'];?>">
@@ -29,7 +22,12 @@
 		$content=$xml->saveHTML();
 		$links = array();
 		add_to_database('sites_viewed',$url,htmlspecialchars($content));
-		
+		if(check_records('sites_to_view',$url)!=0){
+			$pdo = new PDO('mysql:host=localhost;dbname=crawler', 'root', 'admin'); 
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$sql='DELETE FROM sites_to_view WHERE url="'.$url.'"';
+			$pdo->exec($sql);
+		}
 		foreach($xml->getElementsByTagName('a') as $link){
 			$href = $link->getAttribute('href');
 			if($ret = parse_url($href)){
@@ -43,7 +41,7 @@
 		$links = array_unique($links);
 		
 		foreach($links as $link){
-			$URLs .= '<a href="crawler.php?URL='.$link.'" name="'.$link.'">'.$link.'</a>';
+			$URLs .= '<a href="crawler.php?URL='.$link.'">'.$link.'</a>';
 			$xml2 = new DOMDocument();
 			@$xml2->loadHTMLFile($link);
 			$content=$xml2->saveHTML();
@@ -51,11 +49,12 @@
 		}
 		return $URLs;
 	} 
-	
+	$var=NULL;
 	if(isset($_GET['URL']) && $_GET['URL'] != ''){
 		$url = $_GET['URL'];
 		echo $url;
-		//new_tables();
+		//new_tables(); //run only once
+
 		echo "<hr>";
 		if (filter_var($url, FILTER_VALIDATE_URL)){	
 			echo get_URLs($url);
