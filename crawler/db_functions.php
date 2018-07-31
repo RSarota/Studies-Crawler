@@ -3,13 +3,9 @@
 		try{
 			$pdo = new PDO('mysql:host=localhost;dbname=crawler', 'root', 'admin'); 
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-			$sql='DROP TABLE sites_viewed';
+			$sql='CREATE TABLE IF NOT EXISTS sites_viewed( id INT AUTO_INCREMENT PRIMARY KEY, url VARCHAR(200), content TEXT)';
 			$pdo->exec($sql);
-			$sql='DROP TABLE sites_to_view';
-			$pdo->exec($sql);
-			$sql='CREATE TABLE sites_viewed( id INT AUTO_INCREMENT PRIMARY KEY, url VARCHAR(1000), content TEXT)';
-			$pdo->exec($sql);
-			$sql='CREATE TABLE sites_to_view( id INT AUTO_INCREMENT PRIMARY KEY, url VARCHAR(1000), content TEXT)';
+			$sql='CREATE TABLE IF NOT EXISTS sites_to_view( id INT AUTO_INCREMENT PRIMARY KEY, url VARCHAR(200), content TEXT)';
 			$pdo->exec($sql);
 		}
 		catch(PDOException $e){ 

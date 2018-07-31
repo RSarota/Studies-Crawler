@@ -20,8 +20,9 @@
 		$URLs = '';
 		@$xml->loadHTMLFile($url);
 		$content=$xml->saveHTML();
+		$content=mysql_real_escape_string($content);
+		add_to_database('sites_viewed',$url,$content);
 		$links = array();
-		add_to_database('sites_viewed',$url,htmlspecialchars($content));
 		if(check_records('sites_to_view',$url)!=0){
 			$pdo = new PDO('mysql:host=localhost;dbname=crawler', 'root', 'admin'); 
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -45,16 +46,16 @@
 			$xml2 = new DOMDocument();
 			@$xml2->loadHTMLFile($link);
 			$content=$xml2->saveHTML();
-			add_to_database('sites_to_view',$link,htmlspecialchars($content));
+			$content=mysql_real_escape_string($content);
+			add_to_database('sites_to_view',$link,$content);
 		}
 		return $URLs;
 	} 
-	$var=NULL;
+
 	if(isset($_GET['URL']) && $_GET['URL'] != ''){
 		$url = $_GET['URL'];
 		echo $url;
-		//new_tables(); //run only once
-
+		new_tables(); 
 		echo "<hr>";
 		if (filter_var($url, FILTER_VALIDATE_URL)){	
 			echo get_URLs($url);
