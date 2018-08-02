@@ -1,0 +1,60 @@
+#results{
+	text-align:left;
+	padding-left:100px;
+	padding-right:100px;
+}
+
+.text {
+	height: 100%;
+	box-sizing: border-box;
+	line-height: 50px;
+	color: grey;
+	font-size: 13px;  
+	padding: 0 15px;
+}
+
+.results-count {
+	font-size: small;
+	color: #808080;
+    padding-right: 8px;
+    line-height: 43px;
+}
+
+
+.result {
+	margin-bottom: 26px;
+}
+.result .title {
+	color: #1a0dab;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 1.2;
+}
+
+.result .title:hover {
+	text-decoration: underline;
+}
+
+.result .link {
+	color: green;
+	font-style: normal;
+	line-height: 16px;
+	font-size: 14px;
+}
+
+.result .description {
+	color: #545454;
+	line-height: 1.4;
+	font-size: small;
+}
+
+.result .bottom-link {
+	color: #1a0dab;
+	line-height:1.3;
+	font-size: small;
+}
+
+.result .bottom-link:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
